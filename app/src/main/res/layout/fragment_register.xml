@@ -91,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/_5sdp"
                 app:hintEnabled="false"
+                android:id="@+id/nameEditText"
                 app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
                 app:boxCornerRadiusTopStart="@dimen/_10sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_10sdp"
@@ -103,106 +104,199 @@
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="Tug'ilgan sanangiz"
-                android:textColor="@color/black"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_height="wrap_content"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-
+            <LinearLayout
+                android:id="@+id/linearData"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:hintEnabled="false"
-                app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
-                app:boxCornerRadiusTopStart="@dimen/_10sdp"
-                app:boxCornerRadiusBottomStart="@dimen/_10sdp"
-                app:boxCornerRadiusTopEnd="@dimen/_10sdp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:orientation="vertical"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:id="@+id/input_birth"
-                    android:hint="-- -- ----"
-                    android:inputType="none"
-                    android:clickable="false"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Tug'ilgan sanangiz"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="Telefon raqam"
-                android:textColor="@color/black"
 
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_height="wrap_content"/>
+                <com.google.android.material.textfield.TextInputLayout
 
-            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputBirthDay"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:hintEnabled="false"
+                    app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+                    app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                    app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                    app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/input_birth"
+                        android:hint="-- -- ----"
+                        android:inputType="none"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Telefon raqam"
+                    android:textColor="@color/black"
+
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:hintEnabled="false"
+                    app:prefixText="+998"
+                    android:id="@+id/inputPhoneNumberEditText"
+                    app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+                    app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                    app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                    app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+
+                        android:maxLength="9"
+                        android:inputType="phone"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Viloyat"
+                    android:textColor="@color/black"
+
+
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:hintEnabled="false"
+                    android:id="@+id/inputCity"
+                    app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+                    app:endIconMode="dropdown_menu"
+                    app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                    app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                    app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autotextView"
+                        android:layout_width="match_parent"
+                        android:hint="O'zbekiston"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_13sdp"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primaryColor"
+                    android:paddingVertical="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="Davom etish"
+                    android:id="@+id/continueButton"
+                    android:textAllCaps="false"
+                    app:cornerRadius="@dimen/_10sdp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearPassword"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:hintEnabled="false"
-                app:prefixText="+998"
-                app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
-                app:boxCornerRadiusTopStart="@dimen/_10sdp"
-                app:boxCornerRadiusBottomStart="@dimen/_10sdp"
-                app:boxCornerRadiusTopEnd="@dimen/_10sdp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:orientation="vertical"
+                android:visibility="gone"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-
-                    android:maxLength="9"
-                    android:inputType="phone"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Parol"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="Viloyat"
-                android:textColor="@color/black"
 
-
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_height="wrap_content"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:hintEnabled="false"
-                app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
-                app:endIconMode="dropdown_menu"
-                app:boxCornerRadiusTopStart="@dimen/_10sdp"
-                app:boxCornerRadiusBottomStart="@dimen/_10sdp"
-                app:boxCornerRadiusTopEnd="@dimen/_10sdp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_height="wrap_content">
-
-                <AutoCompleteTextView
-                    android:id="@+id/autotextView"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/password1"
                     android:layout_width="match_parent"
-                    android:hint="O'zbekiston"
-                    android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingVertical="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:hintEnabled="false"
+
+                    app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+                    app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                    app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                    app:endIconMode="password_toggle"
+                    app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:hint="****"
+
+                        android:inputType="textPassword"
+
+
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Parolni tasdiqlang"
+                    android:textColor="@color/black"
+
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:hintEnabled="false"
+                    android:id="@+id/password2"
+
+                    app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+                    app:boxCornerRadiusTopStart="@dimen/_10sdp"
+                    app:endIconMode="password_toggle"
+                    app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+                    app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+
+                        android:hint="****"
+                        android:inputType="textPassword"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
 
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primaryColor"
+                    android:paddingVertical="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="Tasdiqlash"
+                    android:id="@+id/submitButton"
+                    android:textAllCaps="false"
+                    app:cornerRadius="@dimen/_10sdp" />
+            </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/primaryColor"
-                android:paddingVertical="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:text="Davom etish"
-                android:id="@+id/btn"
-                android:textAllCaps="false"
-                app:cornerRadius="@dimen/_10sdp" />
+
 
         </LinearLayout>
 

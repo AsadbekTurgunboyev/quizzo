@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="@dimen/_20sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_15sdp"
+    android:layout_gravity="center"
+    app:cardElevation="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:paddingVertical="@dimen/_20sdp"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_background_dialog"
+            app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_120sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha=".41"
+                android:src="@drawable/ellipse_2"
+                app:tint="#698758E7" />
+
+            <ImageView
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/ellipse_2"
+                app:tint="#8758E7" />
+
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+
+                android:layout_gravity="center"
+                android:padding="@dimen/_6sdp"
+                android:src="@drawable/ic_profile" />
+
+
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="Muvaffaqiyatli"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+        <TextView
+            android:id="@+id/loadingTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:text="Iltimos kuting biz siz uchun tayyorlanyapmiz!"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="@dimen/_80sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:lottie_rawRes="@raw/loading"
+            app:lottie_autoPlay="true"
+            app:layout_constraintTop_toBottomOf="@id/loadingTextView"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:lottie_loop="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="@dimen/_80sdp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</com.google.android.material.card.MaterialCardView>
