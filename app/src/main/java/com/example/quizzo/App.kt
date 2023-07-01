@@ -4,6 +4,9 @@ import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
 import com.example.quizzo.di.NetworkModule
+import com.example.quizzo.di.repositoryModule
+import com.example.quizzo.di.useCaseModule
+import com.example.quizzo.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

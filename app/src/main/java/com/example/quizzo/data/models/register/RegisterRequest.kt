@@ -5,6 +5,6 @@ data class RegisterRequest(
     val username: String? = "",
     var password: String? = "",
     var password2: String? ="",
-    val city: String? = "",
-    val birthday: String? = ""
+//    val city: String? = "",
+//    val birthday: String? = ""
 )

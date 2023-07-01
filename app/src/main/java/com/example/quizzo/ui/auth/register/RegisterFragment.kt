@@ -16,16 +16,23 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.quizzo.R
+import com.example.quizzo.data.models.MainResponse
 import com.example.quizzo.data.models.register.RegisterRequest
+import com.example.quizzo.data.models.register.RegisterResponse
 import com.example.quizzo.databinding.FragmentRegisterBinding
 import com.example.quizzo.utils.DatePickerUtils
+import com.example.quizzo.utils.Resource
+import com.example.quizzo.utils.ResourceState
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFragment : Fragment() {
 
     lateinit var viewBinding: FragmentRegisterBinding
     lateinit var dialog: Dialog
     lateinit var registerRequest: RegisterRequest
+
+    val registerViewModel : RegisterViewModel by viewModel()
 
     val regions = arrayListOf<String>(
         "Toshkent",
@@ -55,6 +62,13 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setDialog()
+
+        registerViewModel.registerResponse.observe(viewLifecycleOwner){
+            updateRegisterUi(it)
+        }
+
+
+
         val adapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_spinner_dropdown_item,
@@ -101,8 +115,8 @@ class RegisterFragment : Fragment() {
                 registerRequest = RegisterRequest(
                     username = name,
                     phone_number = phone,
-                    birthday = birth,
-                    city = city
+//                    birthday = birth,
+//                    city = city
                 )
 
                 viewLifecycleOwner.lifecycleScope.launch {
@@ -134,7 +148,9 @@ class RegisterFragment : Fragment() {
                     viewBinding.password2.isCounterEnabled = true
                 }
 
-                Log.e("tekshirish", "onViewCreated: $registerRequest")
+
+                Log.e("tekshirish", "onViewCreated: $registerRequest", )
+                registerViewModel.register(registerRequest)
             }
         }
 
@@ -151,6 +167,22 @@ class RegisterFragment : Fragment() {
 
         }
 
+    }
+
+    private fun updateRegisterUi(resource: Resource<MainResponse<RegisterResponse>>?) {
+        resource?.let {
+            when(it.state){
+                ResourceState.LOADING ->{
+                    Log.e("tekshirish", "updateRegisterUi: loading", )
+                }
+                ResourceState.ERROR ->{
+                    Log.e("tekshirish", "updateRegisterUi: ${it.message}", )
+                }
+                ResourceState.SUCCESS ->{
+                    Log.e("tekshirih", "updateRegisterUi: ${it.data?.data?.token}", )
+                }
+            }
+        }
     }
 
     private fun setDialog() {
