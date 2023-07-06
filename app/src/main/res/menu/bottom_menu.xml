@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <item android:title="Kutubxona"
+        android:icon="@drawable/ic_category"/>
+    <item android:title="Group"
+        android:icon="@drawable/ic_group"/>
+    <item android:title="Reyting"
+        android:icon="@drawable/ic_chart"/>
+    <item android:title="Profile"
+        android:icon="@drawable/ic_profile"/>
+
+
+</menu>
