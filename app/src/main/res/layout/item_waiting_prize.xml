@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_70sdp"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_marginVertical="@dimen/_5sdp"
+    app:cardCornerRadius="@dimen/_12sdp"
+    app:strokeColor="@color/primaryColor"
+    app:strokeWidth="@dimen/_1sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#808858E8"
+            android:alpha=".2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent=".5"/>
+
+        <ImageView
+            android:id="@+id/img_title_pic"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/ic_prize"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_title_pic"
+            app:layout_constraintEnd_toStartOf="@+id/progress_frame"
+            app:layout_constraintStart_toEndOf="@+id/img_title_pic"
+            app:layout_constraintTop_toTopOf="@+id/img_title_pic">
+
+            <TextView
+                android:id="@+id/txt_title_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="10x savol toping"
+                android:textColor="@color/primaryColor"
+                app:layout_constraintLeft_toRightOf="@id/img_title_pic"
+
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_win_awaiting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Yutuq sizni kutmoqda!"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/img_title_pic"
+                app:layout_constraintTop_toBottomOf="@id/txt_title_name" />
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:id="@+id/progress_frame"
+            android:layout_width="@dimen/_50sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_title_pic"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:layout_constraintTop_toTopOf="@+id/img_title_pic"
+            android:layout_height="@dimen/_50sdp">
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:indeterminateOnly="false"
+                android:layout_gravity="center"
+                android:progress="75"
+                android:progressDrawable="@drawable/circle_drawable" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="70%"
+                android:layout_gravity="center"
+                android:textColor="@color/primaryColor"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"/>
+        </FrameLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

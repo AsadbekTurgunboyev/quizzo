@@ -73,7 +73,5 @@ dependencies {
     implementation 'com.tbuonomo:morph-bottom-navigation:1.0.1'
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-
     implementation("com.tbuonomo:dotsindicator:5.0")
-
 }
