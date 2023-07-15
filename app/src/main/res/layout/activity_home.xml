@@ -16,15 +16,30 @@
         app:layout_constraintBottom_toTopOf="@id/bottomBar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:navGraph="@navigation/home_nav_graph"
-        tools:layout_editor_absoluteX="-32dp" />
+        app:navGraph="@navigation/home_nav_graph"/>
 
-    <me.ibrahimsn.lib.SmoothBottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:indicatorRadius="@dimen/_7sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:backgroundColor="@color/secondColor"
-        app:menu="@menu/bottom_menu"/>
+   <devlight.io.library.ntb.NavigationTabBar
+       android:id="@+id/bottomBar"
+       android:layout_width="match_parent"
+       app:ntb_animation_duration="200"
+       app:ntb_inactive_color="@color/white"
+       app:ntb_badged="true"
+       app:ntb_titled="false"
+       app:ntb_active_color="@color/white"
+       app:ntb_scaled="true"
+       app:ntb_tinted="true"
+       app:ntb_title_mode="all"
+       app:ntb_badge_position="right"
+       app:ntb_badge_gravity="top"
+       app:ntb_badge_bg_color="#ffff0000"
+       app:ntb_badge_title_color="#ffffffff"
+       app:ntb_typeface="fonts/custom_typeface.ttf"
+       app:ntb_badge_use_typeface="true"
+       app:ntb_swiped="true"
+       app:ntb_bg_color="@color/primaryColor"
+       app:ntb_icon_size_fraction="0.5"
+       app:ntb_badge_size="10sp"
+       app:ntb_title_size="10sp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       android:layout_height="@dimen/_50sdp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
