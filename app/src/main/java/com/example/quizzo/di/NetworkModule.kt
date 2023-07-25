@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 private const val TIME_OUT = 30L
-private const val BASE_URL: String = "https://quiz.camuf.uz/api/"
+private const val BASE_URL: String = "https://quiz.inminternational.uz/api/"
 
 
 val NetworkModule = module {

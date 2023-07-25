@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nav_graph"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/libraryFragment">
 
     <fragment
         android:id="@+id/dashboardFragment"
@@ -20,4 +20,13 @@
         android:name="com.example.quizzo.ui.home.rating.RatingFragment"
         android:label="fragment_rating"
         tools:layout="@layout/fragment_rating" />
+    <fragment
+        android:id="@+id/libraryFragment"
+        android:name="com.example.quizzo.ui.home.library.LibraryFragment"
+        android:label="fragment_library"
+        tools:layout="@layout/fragment_library" />
+    <fragment
+        android:id="@+id/aboutGameFragment"
+        android:name="com.example.quizzo.ui.home.about_game.AboutGameFragment"
+        android:label="AboutGameFragment" />
 </navigation>

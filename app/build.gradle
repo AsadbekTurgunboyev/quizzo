@@ -75,4 +75,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation("com.tbuonomo:dotsindicator:5.0")
     implementation('devlight.io:navigationtabbar:1.2.5')
+
+
+    implementation 'nl.joery.animatedbottombar:library:1.1.0'
 }

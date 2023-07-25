@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.quizzo.R
+import com.example.quizzo.di.injectFeature
 import devlight.io.library.ntb.NavigationTabBar
 
 
 class HomeActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        injectFeature()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         if (supportActionBar != null) {

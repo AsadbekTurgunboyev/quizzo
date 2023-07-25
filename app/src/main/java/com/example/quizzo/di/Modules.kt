@@ -1,9 +1,13 @@
 package com.example.quizzo.di
 
+import com.example.quizzo.data.repositories.MainRepositoryImp
 import com.example.quizzo.data.repositories.RegisterRepositoryImp
+import com.example.quizzo.domain.repository.MainRepository
 import com.example.quizzo.domain.repository.RegisterRepository
+import com.example.quizzo.domain.usecase.GetMainResponseUseCase
 import com.example.quizzo.domain.usecase.GetRegisterResponseUseCase
 import com.example.quizzo.ui.auth.register.RegisterViewModel
+import com.example.quizzo.ui.home.library.LibraryViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
@@ -26,11 +30,13 @@ private val loadFeature by lazy {
 }
 val viewModelModule: Module = module {
     viewModel{ RegisterViewModel(get())}
+    viewModel{ LibraryViewModel(get())}
 }
 
 val useCaseModule: Module = module {
     // Declare a factory for the register response use case that depends on a repository.
     factory { GetRegisterResponseUseCase(registerRepository = get()) }
+    factory { GetMainResponseUseCase(get()) }
 
 }
 
@@ -39,6 +45,9 @@ val repositoryModule: Module = module {
     // Declare a single instance of the register repository that depends on an API service.
     single<RegisterRepository> {
         RegisterRepositoryImp(apiService = get())
+    }
+    single<MainRepository>{
+        MainRepositoryImp(apiService = get())
     }
 
 
