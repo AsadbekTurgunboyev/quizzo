@@ -62,9 +62,13 @@ class LibraryFragment : Fragment(), LibraryInterface {
         }
     }
 
-    override fun clickItem() {
+    override fun clickItem(response: CategoriesResponse) {
+        libraryViewModel.chooseCategory(categoriesResponse = response)
+        val bundle = Bundle()
+        bundle.putInt("KEY_ID", response.id)
        val navController = findNavController()
-        navController.navigate(R.id.aboutGameFragment)
+        navController.navigate(R.id.aboutGameFragment,bundle)
+
     }
 
 }

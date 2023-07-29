@@ -1,38 +1,41 @@
-package com.example.quizzo.ui.home.library
+package com.example.quizzo.ui.home.play
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.quizzo.data.models.MainResponse
-import com.example.quizzo.data.models.categories.CategoriesResponse
+import com.example.quizzo.data.models.questions.QuestionResponse
 import com.example.quizzo.domain.usecase.GetMainResponseUseCase
 import com.example.quizzo.utils.Resource
 import com.example.quizzo.utils.ResourceState
 import com.google.gson.Gson
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import org.koin.core.qualifier._q
 import retrofit2.HttpException
 
-class LibraryViewModel(private val mainResponseUseCase: GetMainResponseUseCase): ViewModel() {
+class PlayingArenaViewModel(private val mainResponseUseCase: GetMainResponseUseCase): ViewModel() {
     private val compositeDisposable = CompositeDisposable()
-    private val _categories = MutableLiveData<Resource<List<CategoriesResponse>>>()
-    val categories : LiveData<Resource<List<CategoriesResponse>>> get() = _categories
 
-    private val _chooseCategory = MutableLiveData<CategoriesResponse>()
-    val chooseCategory : LiveData<CategoriesResponse> get() = _chooseCategory
+    private val _questions = MutableLiveData<Resource<List<QuestionResponse>>>()
+    val questions : LiveData<Resource<List<QuestionResponse>>> get() = _questions
+
+    val id = -1
 
 
-    fun getCategories(){
-        _categories.postValue(Resource(ResourceState.LOADING))
+
+
+
+    fun getQuestions(id: String){
+        _questions.postValue(Resource(ResourceState.LOADING))
         compositeDisposable
-            .add(mainResponseUseCase.getCategories()
+            .add(mainResponseUseCase.getQuestions(id = id)
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe {}
                 .doOnTerminate {}
                 .subscribe({ response ->
-
-                    _categories.postValue(Resource(ResourceState.SUCCESS,response,null))
-
+                    _questions.postValue(Resource(ResourceState.SUCCESS,response,null))
 
                 },
                     { error ->
@@ -48,13 +51,11 @@ class LibraryViewModel(private val mainResponseUseCase: GetMainResponseUseCase):
                         } else {
                             "An error occurred"
                         }
-                        _categories.postValue(Resource(ResourceState.ERROR, message = error.toString()))
+                        Log.d("savollar", "getQuestions: ${error}")
+
+                        _questions.postValue(Resource(ResourceState.ERROR, message = error.toString()))
                     })
             )
-    }
-
-    fun chooseCategory(categoriesResponse: CategoriesResponse){
-        _chooseCategory.postValue(categoriesResponse)
     }
 
     override fun onCleared() {

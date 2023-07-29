@@ -41,5 +41,5 @@
        app:ntb_badge_size="10sp"
        app:ntb_title_size="10sp"
        app:layout_constraintBottom_toBottomOf="parent"
-       android:layout_height="@dimen/_50sdp"/>
+       android:layout_height="@dimen/_46sdp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

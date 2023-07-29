@@ -9,4 +9,6 @@ class GetMainResponseUseCase(private val mainRepository: MainRepository) {
 
 
     fun getCategories() = mainRepository.getCategories()
+
+    fun getQuestions(id: String) = mainRepository.getQuestions(id = id)
 }

@@ -75,6 +75,7 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/title_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sport"
@@ -162,6 +163,7 @@
 
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/playing_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:backgroundTint="#8758E7"

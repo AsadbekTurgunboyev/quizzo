@@ -16,7 +16,7 @@ class CategoriesAdapter(private val list: List<CategoriesResponse>, private val 
         fun bind( response: CategoriesResponse){
             title.text = response.name
             itemView.setOnClickListener {
-                libraryInterface.clickItem()
+                libraryInterface.clickItem(response)
             }
         }
     }
