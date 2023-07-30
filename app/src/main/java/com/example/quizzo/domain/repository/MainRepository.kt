@@ -8,6 +8,6 @@ interface MainRepository {
 
     fun getCategories() : Observable<List<CategoriesResponse>>
 
-    fun getQuestions(id: String): Observable<List<QuestionResponse>>
+    suspend fun getQuestions(id: String): List<QuestionResponse>
 
 }

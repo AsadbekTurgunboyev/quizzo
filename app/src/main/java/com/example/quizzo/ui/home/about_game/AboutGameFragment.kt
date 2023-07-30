@@ -11,11 +11,12 @@ import com.example.quizzo.data.models.categories.CategoriesResponse
 import com.example.quizzo.databinding.FragmentAboutGameBinding
 import com.example.quizzo.ui.home.library.LibraryViewModel
 import com.example.quizzo.ui.home.play.PlayingArenaViewModel
+import com.example.quizzo.utils.ResourceState
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class AboutGameFragment : Fragment() {
 
-    private val libraryViewModel : LibraryViewModel by sharedViewModel()
+    private val libraryViewModel: LibraryViewModel by sharedViewModel()
     private val playingArenaViewModel: PlayingArenaViewModel by sharedViewModel()
     lateinit var viewBinding: FragmentAboutGameBinding
     var categoryId = -1
@@ -25,7 +26,7 @@ class AboutGameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        viewBinding = FragmentAboutGameBinding.inflate(layoutInflater,container,false)
+        viewBinding = FragmentAboutGameBinding.inflate(layoutInflater, container, false)
         return viewBinding.root
     }
 
@@ -33,10 +34,18 @@ class AboutGameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.playingButton.setOnClickListener {
-            if (categoryId > 0){
+            if (categoryId > 0) {
                 playingArenaViewModel.getQuestions(id = categoryId.toString())
-                val navController = findNavController()
-                navController.navigate(R.id.playingArenaFragment)
+//
+            }
+        }
+        playingArenaViewModel.questions.observe(viewLifecycleOwner) {
+            when (it.state) {
+                ResourceState.SUCCESS -> {
+                    val navController = findNavController()
+                    navController.navigate(R.id.playingArenaFragment)
+                }
+                else -> {}  // Handle error and loading state here
             }
         }
     }
@@ -45,7 +54,7 @@ class AboutGameFragment : Fragment() {
         super.onCreate(savedInstanceState)
         categoryId = arguments!!.getInt("KEY_ID")
 
-        libraryViewModel.chooseCategory.observe(this){
+        libraryViewModel.chooseCategory.observe(this) {
             updateUi(it)
         }
     }

@@ -7,6 +7,8 @@ import com.example.quizzo.data.models.questions.QuestionResponse
 import io.reactivex.Observable
 import com.example.quizzo.data.models.register.RegisterRequest
 import com.example.quizzo.data.models.register.RegisterResponse
+import kotlinx.coroutines.Deferred
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -23,7 +25,7 @@ interface ApiService {
 
 
     @GET("categories/{id}/questions/")
-    fun getQuestions(@Path("id") id: String): Observable<List<QuestionResponse>>
+    suspend fun getQuestions(@Path("id") id: String): List<QuestionResponse>
 
 
 }

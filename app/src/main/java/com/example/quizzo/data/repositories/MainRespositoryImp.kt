@@ -11,7 +11,10 @@ class MainRepositoryImp(private val apiService: ApiService): MainRepository {
         return apiService.getCategories()
     }
 
-    override fun getQuestions(id: String): Observable<List<QuestionResponse>> {
-        return apiService.getQuestions(id = id)
+    override suspend fun getQuestions(id: String): List<QuestionResponse> {
+            return apiService.getQuestions(id = id)
+
     }
+
+
 }
