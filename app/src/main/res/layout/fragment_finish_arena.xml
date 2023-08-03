@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/secondColor"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="1-bosqich"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Vaqt tugadi"
+
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_15sdp"
+        android:text="Keyingi urunishda tezroq harakat qiling!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#E1DADA"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_170sdp"
+        android:layout_marginVertical="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+        <View
+            android:layout_width="@dimen/_170sdp"
+            android:layout_height="@dimen/_170sdp"
+            android:layout_gravity="center"
+            android:alpha=".05"
+            android:background="@drawable/shape_first_overlay" />
+
+        <View
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="@dimen/_140sdp"
+            android:layout_gravity="center"
+            android:alpha=".08"
+            android:background="@drawable/shape_first_overlay" />
+
+        <View
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_110sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_first_overlay"
+            android:backgroundTint="@color/secondColor" />
+
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_110sdp"
+            android:id="@+id/progress"
+            android:layout_gravity="center"
+            app:cpb_background_progressbar_color="#4633A1"
+            app:cpb_background_progressbar_width="10dp"
+            app:cpb_progress="80"
+
+            app:cpb_progress_direction="to_right"
+            app:cpb_progressbar_color="@color/white"
+            app:cpb_progressbar_width="10dp"
+            app:cpb_round_border="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="80%"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/white" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+
+        android:gravity="center"
+        android:paddingVertical="@dimen/_5sdp"
+        android:textColor="#CCFFFFFF"
+
+        android:layout_height="wrap_content"
+        android:text="To'plagan balangiz"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
+
+    <ProgressBar
+        android:id="@+id/pb_timer"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:background="@drawable/progress_bar_bg"
+        android:indeterminate="false"
+        android:max="100"
+        android:padding="2dp"
+        android:progress="40"
+        android:progressDrawable="@drawable/curved_progress_bar"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:layout_editor_absoluteX="26dp" />
+
+    <ImageView
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_minus10sdp"
+        android:src="@drawable/icon_prize"
+        app:layout_constraintBottom_toBottomOf="@+id/pb_timer"
+        app:layout_constraintStart_toStartOf="@+id/pb_timer"
+        app:layout_constraintTop_toTopOf="@+id/pb_timer" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

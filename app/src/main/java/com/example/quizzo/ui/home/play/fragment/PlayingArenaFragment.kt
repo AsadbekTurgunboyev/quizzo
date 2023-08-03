@@ -1,17 +1,22 @@
-package com.example.quizzo.ui.home.play
+package com.example.quizzo.ui.home.play.fragment
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
+import android.transition.Slide
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
+import com.example.quizzo.R
 import com.example.quizzo.data.models.questions.QuestionResponse
 import com.example.quizzo.databinding.FragmentPlayingArenaBinding
 import com.example.quizzo.sound.SoundPlayer
+import com.example.quizzo.ui.home.play.viewmodel.PlayingArenaViewModel
 import com.example.quizzo.ui.home.play.usecases.AnimationManager
 import com.example.quizzo.ui.home.play.usecases.QuestionManager
 import com.example.quizzo.utils.ResourceState
@@ -81,6 +86,20 @@ class PlayingArenaFragment : Fragment() {
         animationManager.animateButton(view) {
             questionManager.answerQuestion(option)
             if (questionManager.isQuizFinished()) {
+                val navController = findNavController()
+                val builder = NavOptions.Builder()
+
+                val slideUp = Slide(Gravity.BOTTOM)
+                slideUp.duration = 300
+                val slideDown = Slide(Gravity.TOP)
+                slideDown.duration = 300
+
+                val navOptions = builder
+                    .setEnterAnim(R.animator.slide_in_bottom)
+                    .build()
+
+                navController.navigate(R.id.finishArenaFragment, null, navOptions)
+
                 val times = questionManager.getTimesList()
                 // Display the times
             } else {

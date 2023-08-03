@@ -20,11 +20,7 @@ class QuestionManager {
     fun getTimesList(): List<Int> = timeTakenList
     fun getCurrentQuestion(): QuestionResponse = questions[currentQuestionIndex]
 
-    fun nextQuestion() {
-        val endTime = System.currentTimeMillis()
-        val timeTaken = endTime - startTime
-
-
+    private fun nextQuestion() {
         if (!isQuizFinished()) {
             currentQuestionIndex++
         }
@@ -34,21 +30,18 @@ class QuestionManager {
         val timeTaken = endTime - startTime
 
         if (isCorrect(option)) {
-            totalCorrect++
-            timeTakenList.add(ConversionUtils.convertFromMillToSeconds(timeTaken))
+            incrementTotalCorrect(timeTaken)
         }
-
-        if (!isQuizFinished()) {
-            currentQuestionIndex++
-        }
+        nextQuestion()
     }
 
     fun isQuizFinished() = currentQuestionIndex >= questions.size
 
     private fun isCorrect(option: Int) = getCurrentQuestion().options[option].is_correct
 
-    fun incrementTotalCorrect() {
+    private fun incrementTotalCorrect(timeTaken: Long) {
         totalCorrect++
+        timeTakenList.add(ConversionUtils.convertFromMillToSeconds(timeTaken))
     }
 
     fun getTotalCorrect() = totalCorrect

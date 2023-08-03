@@ -1,4 +1,4 @@
-package com.example.quizzo.ui.home.play
+package com.example.quizzo.ui.home.play.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

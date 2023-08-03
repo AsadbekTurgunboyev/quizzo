@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/play_nav_graph"
+    app:startDestination="@id/aboutGameFragment">
+
+    <fragment
+        android:id="@+id/aboutGameFragment"
+        android:name="com.example.quizzo.ui.home.about_game.AboutGameFragment"
+        android:label="AboutGameFragment" >
+
+            <argument
+                android:name="KEY_ID"
+                app:argType="integer" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/playingArenaFragment"
+        android:name="com.example.quizzo.ui.home.play.fragment.PlayingArenaFragment"
+        android:label="PlayingArenaFragment" />
+    <fragment
+        android:id="@+id/finishArenaFragment"
+        android:name="com.example.quizzo.ui.home.play.fragment.FinishArenaFragment"
+        android:label="FinishArenaFragment" />
+</navigation>

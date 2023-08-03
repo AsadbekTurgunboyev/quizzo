@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.quizzo.R
 import com.example.quizzo.data.models.categories.CategoriesResponse
 import com.example.quizzo.databinding.FragmentLibraryBinding
+import com.example.quizzo.ui.home.play.activity.PlayingActivity
 import com.example.quizzo.utils.Resource
 import com.example.quizzo.utils.ResourceState
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -64,10 +65,11 @@ class LibraryFragment : Fragment(), LibraryInterface {
 
     override fun clickItem(response: CategoriesResponse) {
         libraryViewModel.chooseCategory(categoriesResponse = response)
-        val bundle = Bundle()
-        bundle.putInt("KEY_ID", response.id)
-       val navController = findNavController()
-        navController.navigate(R.id.aboutGameFragment,bundle)
+        PlayingActivity.open(requireActivity(),response.id)
+//        val bundle = Bundle()
+//        bundle.putInt("KEY_ID", response.id)
+//        val navController = findNavController()
+//        navController.navigate(R.id.aboutGameFragment,bundle)
 
     }
 

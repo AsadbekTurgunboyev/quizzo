@@ -25,12 +25,4 @@
         android:name="com.example.quizzo.ui.home.library.LibraryFragment"
         android:label="fragment_library"
         tools:layout="@layout/fragment_library" />
-    <fragment
-        android:id="@+id/aboutGameFragment"
-        android:name="com.example.quizzo.ui.home.about_game.AboutGameFragment"
-        android:label="AboutGameFragment" />
-    <fragment
-        android:id="@+id/playingArenaFragment"
-        android:name="com.example.quizzo.ui.home.play.PlayingArenaFragment"
-        android:label="PlayingArenaFragment" />
 </navigation>

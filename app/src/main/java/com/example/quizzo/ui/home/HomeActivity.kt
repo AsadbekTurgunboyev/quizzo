@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.quizzo.R
 import com.example.quizzo.di.injectFeature
-import com.example.quizzo.ui.home.play.PlayingArenaViewModel
+import com.example.quizzo.ui.home.play.viewmodel.PlayingArenaViewModel
 import devlight.io.library.ntb.NavigationTabBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -10,10 +10,10 @@ class AnimationManager {
     fun animateButton(view: View, onEnd: () -> Unit) {
         val bounce = AnimatorSet()
 
-        val animX = ObjectAnimator.ofFloat(view, "scaleX", 1.05f, 0.95f, 1.0f)
+        val animX = ObjectAnimator.ofFloat(view, "scaleX", 1.01f, 0.95f, 1.0f)
         animX.duration = 500
 
-        val animY = ObjectAnimator.ofFloat(view, "scaleY", 1.05f, 0.95f, 1.0f)
+        val animY = ObjectAnimator.ofFloat(view, "scaleY", 1.01f, 0.95f, 1.0f)
         animY.duration = 500
 
         val color = ValueAnimator.ofArgb(Color.parseColor("#FFFFFF"), view.context.getColor(R.color.primary))

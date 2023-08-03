@@ -8,8 +8,7 @@ import com.example.quizzo.domain.usecase.GetMainResponseUseCase
 import com.example.quizzo.domain.usecase.GetRegisterResponseUseCase
 import com.example.quizzo.ui.auth.register.RegisterViewModel
 import com.example.quizzo.ui.home.library.LibraryViewModel
-import com.example.quizzo.ui.home.play.PlayingArenaViewModel
-import org.koin.android.ext.koin.androidContext
+import com.example.quizzo.ui.home.play.viewmodel.PlayingArenaViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
@@ -32,7 +31,7 @@ private val loadFeature by lazy {
 val viewModelModule: Module = module {
     viewModel{ RegisterViewModel(get())}
     viewModel{ LibraryViewModel(get())}
-    viewModel{PlayingArenaViewModel(get())}
+    viewModel{ PlayingArenaViewModel(get()) }
 }
 
 val useCaseModule: Module = module {
