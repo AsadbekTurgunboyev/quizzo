@@ -5,6 +5,7 @@ import android.animation.ValueAnimator
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.transition.Slide
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -19,10 +20,12 @@ import com.example.quizzo.data.models.questions.QuestionResponse
 import com.example.quizzo.databinding.FragmentPlayingArenaBinding
 import com.example.quizzo.sound.SoundPlayer
 import com.example.quizzo.ui.home.play.usecases.AnimationManager
+import com.example.quizzo.ui.home.play.usecases.LivesManager
 import com.example.quizzo.ui.home.play.usecases.QuestionManager
 import com.example.quizzo.ui.home.play.viewmodel.PlayingArenaViewModel
 import com.example.quizzo.utils.PlayerStatus
 import com.example.quizzo.utils.ResourceState
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PlayingArenaFragment : Fragment() {
@@ -31,8 +34,14 @@ class PlayingArenaFragment : Fragment() {
 
     private lateinit var soundPlayer: SoundPlayer
     private lateinit var viewBinding: FragmentPlayingArenaBinding
+    private val livesManager: LivesManager = LivesManager()
     private val questionManager = QuestionManager()
     private val animationManager = AnimationManager()
+    private val livesViews = mapOf(
+        1 to viewBinding.live1,
+        2 to viewBinding.live2,
+        3 to viewBinding.live3
+    )
     val animator = ValueAnimator.ofInt(20000, 0).apply {
         duration = 20000
         interpolator = LinearInterpolator()
@@ -81,6 +90,7 @@ class PlayingArenaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+
         viewBinding = FragmentPlayingArenaBinding.inflate(layoutInflater, container, false)
 
         soundPlayer = SoundPlayer(SoundPlayer.SoundType.BUTTON_SOUND, requireContext())
@@ -132,7 +142,6 @@ class PlayingArenaFragment : Fragment() {
     private fun updateQuestions(questions: List<QuestionResponse>?) {
         questions?.let {
             questionManager.setQuestions(it)
-
             updateQuestion(questionManager.getCurrentQuestion())
         }
     }
@@ -140,22 +149,23 @@ class PlayingArenaFragment : Fragment() {
     private fun updateQuestion(response: QuestionResponse) {
         viewBinding.txtCurrrentQuestionCount.text = questionManager.getCurrentQuestionNumber()
 
-        when(questionManager.getTotalInCorrect()){
-            1 -> viewBinding.live1.visibility = View.GONE
-            2 -> viewBinding.live2.visibility = View.GONE
-            3 -> {
-                viewBinding.live3.visibility = View.GONE
-                navigateFinishArena(PlayerStatus.PLAYER_IS_DIED, questionManager.getTotalCorrect())
-            }
-        }
+//        livesViews[livesManager.getRemainingLives()]?.visibility = View.GONE
+//        if (livesManager.getRemainingLives() == 0) {
+//            navigateFinishArena(PlayerStatus.PLAYER_IS_DIED, questionManager.getTotalCorrect())
+//        }
         questionManager.startQuestion()
         with(viewBinding) {
             // Update UI here
             txtQuestion.text = response.question_text
-            txtOption1.text = response.options[0].option_text
-            txtOption2.text = response.options[1].option_text
-            txtOption3.text = response.options[2].option_text
-            txtOption4.text = response.options[3].option_text
+
+//            response.options.forEachIndexed { index, option ->
+//                when(index) {
+//                    0 -> txtOption1.text = option.option_text
+//                    1 -> txtOption2.text = option.option_text
+//                    2 -> txtOption3.text = option.option_text
+//                    3 -> txtOption4.text = option.option_text
+//                }
+//            }
         }
     }
 

@@ -8,6 +8,7 @@ import com.example.quizzo.domain.usecase.GetMainResponseUseCase
 import com.example.quizzo.domain.usecase.GetRegisterResponseUseCase
 import com.example.quizzo.ui.auth.register.RegisterViewModel
 import com.example.quizzo.ui.home.library.LibraryViewModel
+import com.example.quizzo.ui.home.play.usecases.LivesManager
 import com.example.quizzo.ui.home.play.viewmodel.PlayingArenaViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
@@ -38,6 +39,7 @@ val useCaseModule: Module = module {
     // Declare a factory for the register response use case that depends on a repository.
     factory { GetRegisterResponseUseCase(registerRepository = get()) }
     factory { GetMainResponseUseCase(get()) }
+
 
 }
 

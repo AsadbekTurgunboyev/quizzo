@@ -3,7 +3,7 @@ package com.example.quizzo.ui.home.play.usecases
 import com.example.quizzo.data.models.questions.QuestionResponse
 import com.example.quizzo.utils.ConversionUtils
 
-class QuestionManager {
+class QuestionManager() {
     private var questions: List<QuestionResponse> = emptyList()
     private var currentQuestionIndex = 0
     private var totalCorrect = 0
@@ -34,6 +34,7 @@ class QuestionManager {
         if (isCorrect(option)) {
             incrementTotalCorrect(timeTaken)
         }else{
+//            livesManager.decrementLife()
             incrementTotalInCorrect()
         }
         nextQuestion()

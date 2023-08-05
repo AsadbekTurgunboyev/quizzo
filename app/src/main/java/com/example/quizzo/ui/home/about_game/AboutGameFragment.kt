@@ -43,16 +43,24 @@ class AboutGameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.playingButton.setOnClickListener {
+            val navController = findNavController()
+            navController.navigate(R.id.playingArenaFragment)
+
             if (categoryId > 0) {
                 playingArenaViewModel.getQuestions(id = categoryId.toString())
 //
             }
         }
+        libraryViewModel.chooseCategory.observe(viewLifecycleOwner) {
+            updateUi(it)
+        }
+
         playingArenaViewModel.questions.observe(viewLifecycleOwner) {
             when (it.state) {
                 ResourceState.SUCCESS -> {
-                    val navController = findNavController()
-                    navController.navigate(R.id.playingArenaFragment)
+
+
+
                 }
                 else -> {}  // Handle error and loading state here
             }
@@ -63,9 +71,7 @@ class AboutGameFragment : Fragment() {
         super.onCreate(savedInstanceState)
 //        categoryId = arguments!!.getInt("KEY_ID")
 
-        libraryViewModel.chooseCategory.observe(this) {
-            updateUi(it)
-        }
+
     }
 
     private fun updateUi(response: CategoriesResponse?) {
