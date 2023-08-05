@@ -35,7 +35,6 @@ class AboutGameFragment : Fragment() {
             val id = bundle.getInt("KEY_ID", -1) // The second parameter is a default value.
             // Use 'id' here.
             categoryId = id
-            Toast.makeText(requireContext(), "$id", Toast.LENGTH_SHORT).show()
         }
         return viewBinding.root
     }
@@ -45,7 +44,6 @@ class AboutGameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.playingButton.setOnClickListener {
             if (categoryId > 0) {
-                Toast.makeText(requireContext(), "$categoryId", Toast.LENGTH_SHORT).show()
                 playingArenaViewModel.getQuestions(id = categoryId.toString())
 //
             }
@@ -53,7 +51,6 @@ class AboutGameFragment : Fragment() {
         playingArenaViewModel.questions.observe(viewLifecycleOwner) {
             when (it.state) {
                 ResourceState.SUCCESS -> {
-                    Log.d("savollar", "onViewCreated: $it")
                     val navController = findNavController()
                     navController.navigate(R.id.playingArenaFragment)
                 }

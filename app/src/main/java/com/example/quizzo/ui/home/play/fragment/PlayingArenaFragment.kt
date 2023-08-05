@@ -1,6 +1,7 @@
 package com.example.quizzo.ui.home.play.fragment
 
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.transition.Slide
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
+import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
@@ -16,9 +18,10 @@ import com.example.quizzo.R
 import com.example.quizzo.data.models.questions.QuestionResponse
 import com.example.quizzo.databinding.FragmentPlayingArenaBinding
 import com.example.quizzo.sound.SoundPlayer
-import com.example.quizzo.ui.home.play.viewmodel.PlayingArenaViewModel
 import com.example.quizzo.ui.home.play.usecases.AnimationManager
 import com.example.quizzo.ui.home.play.usecases.QuestionManager
+import com.example.quizzo.ui.home.play.viewmodel.PlayingArenaViewModel
+import com.example.quizzo.utils.PlayerStatus
 import com.example.quizzo.utils.ResourceState
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -30,6 +33,24 @@ class PlayingArenaFragment : Fragment() {
     private lateinit var viewBinding: FragmentPlayingArenaBinding
     private val questionManager = QuestionManager()
     private val animationManager = AnimationManager()
+    val animator = ValueAnimator.ofInt(20000, 0).apply {
+        duration = 20000
+        interpolator = LinearInterpolator()
+        addUpdateListener { animation ->
+
+
+            val progress = animation.animatedValue as Int
+            requireActivity().runOnUiThread {
+                viewBinding.txtTimeLeft.text = "${(progress / 1000)} sec"
+            }
+            if ((progress / 1000)<2){
+               navigateFinishArena(PlayerStatus.PLAYER_NO_TIME, questionManager.getTotalCorrect())
+
+            }
+            viewBinding.pbTimer.progress = progress / 200
+        }
+
+    }
 
     val countDownTimer: CountDownTimer = object : CountDownTimer(20000, 1000) {
         override fun onTick(p0: Long) {
@@ -61,7 +82,9 @@ class PlayingArenaFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         viewBinding = FragmentPlayingArenaBinding.inflate(layoutInflater, container, false)
+
         soundPlayer = SoundPlayer(SoundPlayer.SoundType.BUTTON_SOUND, requireContext())
+        animator.start()
         return viewBinding.root
     }
 
@@ -82,24 +105,12 @@ class PlayingArenaFragment : Fragment() {
     }
 
     private fun handleClick(option: Int, view: View) {
+        animator.start()
         soundPlayer.playSound()
         animationManager.animateButton(view) {
             questionManager.answerQuestion(option)
             if (questionManager.isQuizFinished()) {
-                val navController = findNavController()
-                val builder = NavOptions.Builder()
-
-                val slideUp = Slide(Gravity.BOTTOM)
-                slideUp.duration = 300
-                val slideDown = Slide(Gravity.TOP)
-                slideDown.duration = 300
-
-                val navOptions = builder
-                    .setEnterAnim(R.animator.slide_in_bottom)
-                    .build()
-
-                navController.navigate(R.id.finishArenaFragment, null, navOptions)
-
+                navigateFinishArena(PlayerStatus.PLAYER_IS_ALIVE, questionManager.getTotalCorrect())
                 val times = questionManager.getTimesList()
                 // Display the times
             } else {
@@ -121,11 +132,22 @@ class PlayingArenaFragment : Fragment() {
     private fun updateQuestions(questions: List<QuestionResponse>?) {
         questions?.let {
             questionManager.setQuestions(it)
+
             updateQuestion(questionManager.getCurrentQuestion())
         }
     }
 
     private fun updateQuestion(response: QuestionResponse) {
+        viewBinding.txtCurrrentQuestionCount.text = questionManager.getCurrentQuestionNumber()
+
+        when(questionManager.getTotalInCorrect()){
+            1 -> viewBinding.live1.visibility = View.GONE
+            2 -> viewBinding.live2.visibility = View.GONE
+            3 -> {
+                viewBinding.live3.visibility = View.GONE
+                navigateFinishArena(PlayerStatus.PLAYER_IS_DIED, questionManager.getTotalCorrect())
+            }
+        }
         questionManager.startQuestion()
         with(viewBinding) {
             // Update UI here
@@ -137,5 +159,38 @@ class PlayingArenaFragment : Fragment() {
         }
     }
 
+    override fun onStop() {
+        super.onStop()
+        animator.cancel()
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        animator.cancel()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        animator.cancel()
+    }
+
+    private fun navigateFinishArena(status: Int, totalCorrect: Int){
+        animator.cancel()
+        val navController = findNavController()
+        val builder = NavOptions.Builder()
+
+        val bundle = Bundle()
+        bundle.putInt("game_over_status",status)
+        bundle.putInt("total_correct",totalCorrect)
+        val slideUp = Slide(Gravity.BOTTOM)
+        slideUp.duration = 300
+        val slideDown = Slide(Gravity.TOP)
+        slideDown.duration = 300
+
+        val navOptions = builder
+            .setEnterAnim(R.animator.slide_in_bottom)
+            .build()
+
+        navController.navigate(R.id.finishArenaFragment, bundle, navOptions)
+    }
 }

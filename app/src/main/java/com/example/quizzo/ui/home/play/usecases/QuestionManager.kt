@@ -7,6 +7,7 @@ class QuestionManager {
     private var questions: List<QuestionResponse> = emptyList()
     private var currentQuestionIndex = 0
     private var totalCorrect = 0
+    private var totalIncorrect = 0
     private var startTime: Long = 0
     private val timeTakenList = mutableListOf<Int>()
 
@@ -17,6 +18,7 @@ class QuestionManager {
         startTime = System.currentTimeMillis()
     }
 
+    fun getCurrentQuestionNumber(): String = "$currentQuestionIndex / ${questions.size}"
     fun getTimesList(): List<Int> = timeTakenList
     fun getCurrentQuestion(): QuestionResponse = questions[currentQuestionIndex]
 
@@ -31,6 +33,8 @@ class QuestionManager {
 
         if (isCorrect(option)) {
             incrementTotalCorrect(timeTaken)
+        }else{
+            incrementTotalInCorrect()
         }
         nextQuestion()
     }
@@ -43,6 +47,10 @@ class QuestionManager {
         totalCorrect++
         timeTakenList.add(ConversionUtils.convertFromMillToSeconds(timeTaken))
     }
+    private fun incrementTotalInCorrect(){
+        totalIncorrect++
+    }
 
+    fun getTotalInCorrect() = totalIncorrect
     fun getTotalCorrect() = totalCorrect
 }
