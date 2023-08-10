@@ -16,5 +16,5 @@ Quiz Application is a fun Android app designed to test your knowledge on various
 
 ### Installation
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/quiz-application.git
+```bash
+git clone https://github.com/your-username/quiz-application.git
