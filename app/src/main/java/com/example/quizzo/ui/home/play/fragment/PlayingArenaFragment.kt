@@ -5,7 +5,6 @@ import android.animation.ValueAnimator
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.transition.Slide
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +24,6 @@ import com.example.quizzo.ui.home.play.usecases.QuestionManager
 import com.example.quizzo.ui.home.play.viewmodel.PlayingArenaViewModel
 import com.example.quizzo.utils.PlayerStatus
 import com.example.quizzo.utils.ResourceState
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PlayingArenaFragment : Fragment() {
@@ -34,14 +32,13 @@ class PlayingArenaFragment : Fragment() {
 
     private lateinit var soundPlayer: SoundPlayer
     private lateinit var viewBinding: FragmentPlayingArenaBinding
+
     private val livesManager: LivesManager = LivesManager()
-    private val questionManager = QuestionManager()
     private val animationManager = AnimationManager()
-    private val livesViews = mapOf(
-        1 to viewBinding.live1,
-        2 to viewBinding.live2,
-        3 to viewBinding.live3
-    )
+    private val questionManager = QuestionManager(livesManager)
+
+
+
     val animator = ValueAnimator.ofInt(20000, 0).apply {
         duration = 20000
         interpolator = LinearInterpolator()
@@ -113,6 +110,20 @@ class PlayingArenaFragment : Fragment() {
             btnOption4.setOnClickListener { handleClick(3, it) }
         }
     }
+    private fun updateLivesView() {
+        val livesViews = mapOf(
+            1 to viewBinding.live1,
+            2 to viewBinding.live2,
+            3 to viewBinding.live3
+        )
+        val lostLives = LivesManager.MAX_LIVES - livesManager.getRemainingLives()
+        for (i in 1..lostLives) {
+            livesViews[i]?.visibility = View.GONE
+        }
+        if (livesManager.getRemainingLives() == 0) {
+            navigateFinishArena(PlayerStatus.PLAYER_IS_DIED, questionManager.getTotalCorrect())
+        }
+    }
 
     private fun handleClick(option: Int, view: View) {
         animator.start()
@@ -148,24 +159,21 @@ class PlayingArenaFragment : Fragment() {
 
     private fun updateQuestion(response: QuestionResponse) {
         viewBinding.txtCurrrentQuestionCount.text = questionManager.getCurrentQuestionNumber()
+        updateLivesView()
 
-//        livesViews[livesManager.getRemainingLives()]?.visibility = View.GONE
-//        if (livesManager.getRemainingLives() == 0) {
-//            navigateFinishArena(PlayerStatus.PLAYER_IS_DIED, questionManager.getTotalCorrect())
-//        }
         questionManager.startQuestion()
         with(viewBinding) {
             // Update UI here
             txtQuestion.text = response.question_text
 
-//            response.options.forEachIndexed { index, option ->
-//                when(index) {
-//                    0 -> txtOption1.text = option.option_text
-//                    1 -> txtOption2.text = option.option_text
-//                    2 -> txtOption3.text = option.option_text
-//                    3 -> txtOption4.text = option.option_text
-//                }
-//            }
+            response.options.forEachIndexed { index, option ->
+                when(index) {
+                    0 -> txtOption1.text = option.option_text
+                    1 -> txtOption2.text = option.option_text
+                    2 -> txtOption3.text = option.option_text
+                    3 -> txtOption4.text = option.option_text
+                }
+            }
         }
     }
 

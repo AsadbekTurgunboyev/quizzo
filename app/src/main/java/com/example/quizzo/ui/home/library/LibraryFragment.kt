@@ -32,14 +32,11 @@ class LibraryFragment : Fragment(), LibraryInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         libraryViewModel.getCategories()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        libraryViewModel.categories.observe(this){
+        libraryViewModel.categories.observe(viewLifecycleOwner){
             setCategories(it)
         }
     }
+
 
     private fun setCategories(resource: Resource<List<CategoriesResponse>>) {
         resource.let {

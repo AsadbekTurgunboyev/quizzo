@@ -43,21 +43,23 @@ class AboutGameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.playingButton.setOnClickListener {
-            val navController = findNavController()
-            navController.navigate(R.id.playingArenaFragment)
 
             if (categoryId > 0) {
-                playingArenaViewModel.getQuestions(id = categoryId.toString())
+               playingArenaViewModel.getQuestions(id = categoryId.toString())
 //
             }
         }
+        libraryViewModel.chooseCategory.removeObservers(viewLifecycleOwner)
         libraryViewModel.chooseCategory.observe(viewLifecycleOwner) {
             updateUi(it)
         }
-
-        playingArenaViewModel.questions.observe(viewLifecycleOwner) {
+        playingArenaViewModel.questions.removeObservers(viewLifecycleOwner)
+         playingArenaViewModel.questions.observe(viewLifecycleOwner) {
             when (it.state) {
                 ResourceState.SUCCESS -> {
+                    val navController = findNavController()
+                    navController.navigate(R.id.playingArenaFragment)
+
 
 
 

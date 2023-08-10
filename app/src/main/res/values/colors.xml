@@ -8,6 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#EF5350</color>
+    <color name="times_up">#E94F4F</color>
+    <color name="finish_up">#42B5A4</color>
+    <color name="finish_up_for_progress">#389A8D</color>
+    <color name="times_up_for_progress">#C54343</color>
 
     <color name="primary">#8758E7</color>
 

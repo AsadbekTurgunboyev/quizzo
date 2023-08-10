@@ -46,25 +46,66 @@ class FinishArenaFragment : Fragment() {
         }
         viewBinding.totalCorrectPercent.text = "${(10 * totalCorrect)}%"
 
+        viewBinding.finishButton.setOnClickListener {
+
+        }
+
         when (id) {
             PlayerStatus.PLAYER_NO_TIME -> {
-
+                viewBinding.playerStatusTextView.text = "Vaqt tugadi"
+                viewBinding.finishFeedback.text = "Keyingi urunishda tezroq harakat qiling!"
                 viewBinding.parentBg.backgroundTintList =
-                    ColorStateList.valueOf(requireActivity().getColor(R.color.red))
+                    ColorStateList.valueOf(requireActivity().getColor(R.color.times_up))
+                viewBinding.view3.backgroundTintList = ColorStateList.valueOf(requireActivity().getColor(R.color.times_up))
+
+                viewBinding.pbTimer.progressTintList =  ColorStateList.valueOf(requireActivity().getColor(R.color.times_up_for_progress))
+                viewBinding.progress.backgroundProgressBarColor = requireActivity().getColor(R.color.times_up_for_progress)
                 val window: Window = activity!!.window
+
+                viewBinding.finishButton.setTextColor(ColorStateList.valueOf(requireActivity().getColor(R.color.times_up)))
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                 window.statusBarColor = ContextCompat.getColor(
-                    activity!!, R.color.red
+                    activity!!, R.color.times_up
                 )
 
 
             }
             PlayerStatus.PLAYER_IS_DIED -> {
-                viewBinding.playerStatusTextView.text = "Joningiz tugadi"
+                viewBinding.playerStatusTextView.text = "O'yin tugadi"
+                viewBinding.finishFeedback.text = "Keyingi o'yinlarda omad!"
+                viewBinding.parentBg.backgroundTintList =
+                    ColorStateList.valueOf(requireActivity().getColor(R.color.times_up))
+                viewBinding.view3.backgroundTintList = ColorStateList.valueOf(requireActivity().getColor(R.color.times_up))
+
+                viewBinding.pbTimer.progressTintList =  ColorStateList.valueOf(requireActivity().getColor(R.color.times_up_for_progress))
+                viewBinding.progress.backgroundProgressBarColor = requireActivity().getColor(R.color.times_up_for_progress)
+                val window: Window = activity!!.window
+
+                viewBinding.finishButton.setTextColor(ColorStateList.valueOf(requireActivity().getColor(R.color.times_up)))
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.statusBarColor = ContextCompat.getColor(
+                    activity!!, R.color.times_up
+                )
             }
             PlayerStatus.PLAYER_IS_ALIVE -> {
+                viewBinding.playerStatusTextView.text = "Tabriklaymiz"
+                viewBinding.finishFeedback.text = "Yaxshi natija"
+                viewBinding.parentBg.backgroundTintList =
+                    ColorStateList.valueOf(requireActivity().getColor(R.color.finish_up))
+                viewBinding.view3.backgroundTintList = ColorStateList.valueOf(requireActivity().getColor(R.color.finish_up))
 
+                viewBinding.pbTimer.progressTintList =  ColorStateList.valueOf(requireActivity().getColor(R.color.finish_up_for_progress))
+                viewBinding.progress.backgroundProgressBarColor = requireActivity().getColor(R.color.finish_up_for_progress)
+                val window: Window = activity!!.window
+
+                viewBinding.finishButton.setTextColor(ColorStateList.valueOf(requireActivity().getColor(R.color.finish_up)))
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.statusBarColor = ContextCompat.getColor(
+                    activity!!, R.color.finish_up
+                )
             }
         }
     }

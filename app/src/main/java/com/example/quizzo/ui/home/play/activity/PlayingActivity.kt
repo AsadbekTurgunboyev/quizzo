@@ -28,8 +28,7 @@ class PlayingActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         navController.navigate(R.id.aboutGameFragment, bundle)
-//        val navController = findNavController()
-//        navController.navigate(R.id.aboutGameFragment,bundle)
+
     }
 
 
