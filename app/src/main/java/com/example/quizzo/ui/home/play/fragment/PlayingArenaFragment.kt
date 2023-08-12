@@ -5,6 +5,7 @@ import android.animation.ValueAnimator
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.transition.Slide
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -88,7 +89,7 @@ class PlayingArenaFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
 
-        viewBinding = FragmentPlayingArenaBinding.inflate(layoutInflater, container, false)
+        viewBinding = FragmentPlayingArenaBinding.inflate(inflater, container, false)
 
         soundPlayer = SoundPlayer(SoundPlayer.SoundType.BUTTON_SOUND, requireContext())
         animator.start()
@@ -144,7 +145,10 @@ class PlayingArenaFragment : Fragment() {
     private fun setupObservers() {
         playingArenaViewModel.questions.observe(viewLifecycleOwner) {
             when (it.state) {
-                ResourceState.SUCCESS -> updateQuestions(it.data)
+
+                ResourceState.SUCCESS -> {
+                    updateQuestions(it.data)
+                }
                 else -> {}  // Handle error and loading state here
             }
         }

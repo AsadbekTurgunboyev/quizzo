@@ -1,9 +1,13 @@
 package com.example.quizzo.ui.home
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import com.example.quizzo.R
 import com.example.quizzo.di.injectFeature
 import com.example.quizzo.ui.home.play.viewmodel.PlayingArenaViewModel
@@ -69,5 +73,39 @@ class HomeActivity : AppCompatActivity() {
         )
         navigationTabBar.models = models
 
+        navigationTabBar.setModelIndex(0,true)
+        navigationTabBar.onTabBarSelectedIndexListener = object : NavigationTabBar.OnTabBarSelectedIndexListener {
+            override fun onStartTabSelected(model: NavigationTabBar.Model, index: Int) {
+                // Code here
+            }
+
+            override fun onEndTabSelected(model: NavigationTabBar.Model, index: Int) {
+                val navController = findNavController(R.id.fragment_container) // Replace with your NavHostFragment ID
+                when (index) {
+                    0 -> navController.navigate(R.id.dashboardFragment) // Replace with your fragment IDs
+                    1 -> navController.navigate(R.id.libraryFragment)
+                    2 -> navController.navigate(R.id.libraryFragment)
+                    3 -> navController.navigate(R.id.ratingFragment)
+                    4 -> navController.navigate(R.id.profileFragment)
+                    // Add more cases for other indices
+                    else -> {
+                    navController.navigate(R.id.dashboardFragment)
+                    // Handle an unexpected index value if necessary
+                    }
+                }
+            }
+        }
+
+
+    }
+
+
+    companion object{
+        fun open(activity: Activity) {
+            val intent = Intent(activity, HomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            activity.startActivity(intent)
+            activity.finish()
+        }
     }
 }

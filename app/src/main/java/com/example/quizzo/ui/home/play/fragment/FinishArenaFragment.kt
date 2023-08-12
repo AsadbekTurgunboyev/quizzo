@@ -1,6 +1,7 @@
 package com.example.quizzo.ui.home.play.fragment
 
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.*
@@ -9,11 +10,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.quizzo.R
 import com.example.quizzo.databinding.FragmentFinishArenaBinding
+import com.example.quizzo.ui.home.HomeActivity
 import com.example.quizzo.utils.PlayerStatus
 
 
 class FinishArenaFragment : Fragment() {
-
 
     lateinit var viewBinding: FragmentFinishArenaBinding
 
@@ -21,7 +22,7 @@ class FinishArenaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        viewBinding = FragmentFinishArenaBinding.inflate(layoutInflater, container, false)
+        viewBinding = FragmentFinishArenaBinding.inflate(inflater, container, false)
         val bundle = this.arguments
         if (bundle != null) {
             val id =
@@ -47,7 +48,7 @@ class FinishArenaFragment : Fragment() {
         viewBinding.totalCorrectPercent.text = "${(10 * totalCorrect)}%"
 
         viewBinding.finishButton.setOnClickListener {
-
+            HomeActivity.open(requireActivity())
         }
 
         when (id) {
