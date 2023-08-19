@@ -83,6 +83,70 @@
         app:layout_constraintVertical_bias="0.37" />
 
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:gravity="center"
+        android:background="@drawable/leader_back"
+        android:orientation="horizontal"
+        android:padding="@dimen/_2sdp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline18"
+        app:layout_constraintEnd_toStartOf="@+id/guideline20"
+        app:layout_constraintStart_toStartOf="@+id/guideline19"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/weekly_txt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:clickable="true"
+
+            android:focusable="true"
+            android:background="@drawable/leader_text_background"
+            android:textColor="@color/leader_text_color"
+            android:maxLines="1"
+            android:text="Haftalik" />
+
+        <TextView
+            android:id="@+id/monthly_txt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+
+            android:focusable="true"
+            android:background="@drawable/leader_text_background"
+            android:textColor="@color/leader_text_color"
+
+            android:gravity="center"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:text="Oylik" />
+
+        <TextView
+            android:id="@+id/all_txt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/leader_text_background"
+            android:textColor="@color/leader_text_color"
+
+            android:gravity="center"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:text="Umumiy" />
+
+    </LinearLayout>
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView3"
         android:layout_width="0dp"

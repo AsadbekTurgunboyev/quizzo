@@ -1,4 +1,4 @@
-package com.example.quizzo.ui.home.profile.usecase
+package com.example.quizzo.ui.home.rating.usecase
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
