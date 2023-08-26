@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Quizzo"
         tools:targetApi="31">
         <activity
+            android:name=".ui.home.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.play.activity.PlayingActivity"
             android:exported="false" />
         <activity
@@ -31,7 +34,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>

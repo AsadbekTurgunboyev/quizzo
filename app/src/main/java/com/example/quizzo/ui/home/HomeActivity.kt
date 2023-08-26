@@ -9,8 +9,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.example.quizzo.R
+import com.example.quizzo.data.preference.PreferenceManager
 import com.example.quizzo.di.injectFeature
 import com.example.quizzo.ui.home.play.viewmodel.PlayingArenaViewModel
+import com.example.quizzo.utils.LanguageUtils
 import devlight.io.library.ntb.NavigationTabBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,9 +20,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeActivity : AppCompatActivity() {
 
     val playingArenaViewModel: PlayingArenaViewModel by viewModel()
+    lateinit var preferenceManager: PreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injectFeature()
+        preferenceManager = PreferenceManager(this)
+        preferenceManager.getLanguage()?.let { LanguageUtils.setDefaultLocale(this, it) }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         if (supportActionBar != null) {

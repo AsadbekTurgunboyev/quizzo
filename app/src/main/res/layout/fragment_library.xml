@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_10sdp"
-            android:text="Kutubxona"
+            android:text="@string/kutubxona"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/black"
             android:textStyle="bold" />

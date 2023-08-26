@@ -151,13 +151,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tavsif"
+                android:text="@string/tavsif"
                 android:textColor="#C7ACFE"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_weight="1"/>
 
 
@@ -168,7 +168,7 @@
                 android:layout_height="wrap_content"
                 app:backgroundTint="#8758E7"
                 android:paddingVertical="15dp"
-                android:text="O'yinga kirish"
+                android:text="@string/o_yinga_kirish"
                 android:textAllCaps="false"
                 android:textStyle="bold"
                 app:cornerRadius="15dp"/>

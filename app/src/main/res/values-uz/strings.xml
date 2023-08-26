@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="salom">Салом</string>
+    <string name="sovrinlar">Совринлар</string>
+    <string name="o_yinga_kirish">У́йинга кириш</string>
+    <string name="tavsif">Тавсиф</string>
+    <string name="kutubxona">Кутубхона</string>
+    <string name="haftalik">Ҳафталик</string>
+    <string name="oylik">Ойлик</string>
+    <string name="umumiy">Умумий</string>
+
+    <string name="til">Тил</string>
+
+</resources>

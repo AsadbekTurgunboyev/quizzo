@@ -48,7 +48,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Salom"
+                android:text="@string/salom"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
             <TextView
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
 
-                    android:src="@drawable/ic_star" />
+                    android:src="@drawable/icon_star" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -216,7 +216,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/_10sdp"
-                android:text="Sovrinlar"
+                android:text="@string/sovrinlar"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/black"

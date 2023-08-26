@@ -7,139 +7,317 @@
     tools:context=".ui.home.profile.ProfileFragment">
 
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:paddingHorizontal="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="Profil"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#CC000000"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_settings"
+            app:tint="@color/black" />
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/secondColor"
-        app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
 
-        android:src="@drawable/ic_back"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="@+id/guideline11"
-        app:tint="@color/white" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="@dimen/_20sdp"
-
-        android:layout_height="@dimen/_20sdp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/ic_settings"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline11"
-        app:tint="@color/white" />
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:cardElevation="@dimen/_10sdp"
-        app:cardCornerRadius="@dimen/_12sdp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline12"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="@+id/guideline9" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:paddingHorizontal="@dimen/_7sdp"
-            android:paddingVertical="@dimen/_10sdp"
             android:orientation="vertical"
+            android:paddingTop="@dimen/_20sdp"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:gravity="center_horizontal"
             android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="@dimen/_150sdp"
+                android:layout_gravity="center"
+                android:layout_height="@dimen/_150sdp"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:id="@+id/tv_profile_person_name"
-                android:text="Yormatov Abdumomin"
-                android:gravity="center_horizontal"
-                android:textColor="#232222"
-                android:textStyle="bold"
+                android:text="Asadbek"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
                 android:layout_height="wrap_content"/>
+
+            <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_7sdp"
+                    android:max="400"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:progress="200"
+                    android:progressDrawable="@drawable/custom_progress_bg" />
+
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="horizontal"
-                android:paddingVertical="@dimen/_7sdp"
+                android:gravity="center_vertical"
                 android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:src="@drawable/ic_star"
+                    android:layout_height="@dimen/_18sdp"
+                     />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="47/100"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_height="wrap_content"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:textColor="@color/primaryColor"
-                    android:text="O'yin darajangiz"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:gravity="end"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:text="keyingi natijaga 53 ta qoldi"
                     android:layout_height="wrap_content"/>
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:src="@drawable/ic_star"
+                    android:layout_height="@dimen/_18sdp"/>
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:paddingVertical="@dimen/_10sdp"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:text="200/400"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-
+                    android:text="Statistika"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"
                     android:layout_height="wrap_content"/>
-            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Batafsil"
+                    android:textAllCaps="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="#1E88E5"
+                    android:layout_height="wrap_content"/>
 
-           <ProgressBar
-               android:layout_width="match_parent"
-               android:progress="200"
-               android:max="400"
-               android:progressDrawable="@drawable/custom_progress_bg"
-               style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-               android:layout_height="@dimen/_7sdp"/>
+            </RelativeLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_5sdp"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_height="@dimen/_90sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_statistic"
+                    android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/_2sdp"
+                        android:text="Sovrinlar"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="@dimen/_9sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/_5sdp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:src="@drawable/ic_prize_for_statistics"
+                            android:layout_height="@dimen/_20sdp"
+                            app:tint="@color/white" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="300"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/_2sdp"
+                        android:text="Reyting"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="@dimen/_9sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/_5sdp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:src="@drawable/ic_prizes_for_statistics"
+                            android:layout_height="@dimen/_20sdp"
+                            app:tint="@color/white" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="300"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/_2sdp"
+                        android:text="Topilgan savollar"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="@dimen/_9sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/_5sdp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:src="@drawable/ic_questions_for_statistics"
+                            android:layout_height="@dimen/_20sdp"
+                            app:tint="@color/white" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:text="300"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:paddingVertical="@dimen/_10sdp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Yutuqlar"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:text="Barchasi"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="#1E88E5"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.core.widget.NestedScrollView>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".05" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".95" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".35" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".25" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".6" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".05" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

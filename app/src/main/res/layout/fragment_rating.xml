@@ -110,7 +110,7 @@
             android:background="@drawable/leader_text_background"
             android:textColor="@color/leader_text_color"
             android:maxLines="1"
-            android:text="Haftalik" />
+            android:text="@string/haftalik" />
 
         <TextView
             android:id="@+id/monthly_txt"
@@ -127,7 +127,7 @@
             android:gravity="center"
             android:maxLines="1"
             android:textStyle="bold"
-            android:text="Oylik" />
+            android:text="@string/oylik" />
 
         <TextView
             android:id="@+id/all_txt"
@@ -143,7 +143,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:maxLines="1"
-            android:text="Umumiy" />
+            android:text="@string/umumiy" />
 
     </LinearLayout>
 
