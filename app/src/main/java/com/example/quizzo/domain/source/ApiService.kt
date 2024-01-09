@@ -21,7 +21,7 @@ interface ApiService {
     fun register(@Body registerRequest: RegisterRequest): Observable<MainResponse<RegisterResponse>>
 
     @GET("categories/")
-    fun getCategories(): Observable<List<CategoriesResponse>>
+    suspend fun getCategories(): List<CategoriesResponse>
 
 
     @GET("categories/{id}/questions/")

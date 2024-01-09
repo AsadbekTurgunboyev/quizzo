@@ -6,7 +6,7 @@ import io.reactivex.Observable
 
 interface MainRepository {
 
-    fun getCategories() : Observable<List<CategoriesResponse>>
+    suspend fun getCategories() : List<CategoriesResponse>
 
     suspend fun getQuestions(id: String): List<QuestionResponse>
 

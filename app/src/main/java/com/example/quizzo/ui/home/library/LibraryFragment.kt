@@ -42,6 +42,7 @@ class LibraryFragment : Fragment(), LibraryInterface {
         resource.let {
             when(it.state){
                 ResourceState.LOADING ->{
+
                     Log.d("tekshirish", "setCategories: loading ")
                 }
                 ResourceState.ERROR ->{

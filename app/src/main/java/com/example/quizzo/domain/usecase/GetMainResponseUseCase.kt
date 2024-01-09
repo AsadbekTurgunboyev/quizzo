@@ -8,7 +8,7 @@ import io.reactivex.Observable
 class GetMainResponseUseCase(private val mainRepository: MainRepository) {
 
 
-    fun getCategories() = mainRepository.getCategories()
+    suspend fun getCategories() = mainRepository.getCategories()
 
     suspend fun getQuestions(id: String) = mainRepository.getQuestions(id = id)
 }

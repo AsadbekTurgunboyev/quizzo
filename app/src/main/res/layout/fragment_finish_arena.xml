@@ -23,7 +23,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/_10sdp"
             android:src="@drawable/ic_back"
-            app:tint="@color/white" />
+            app:tint="@color/white"/>
         <TextView
             android:layout_width="wrap_content"
             android:text="1-bosqich"
@@ -87,9 +87,9 @@
             android:backgroundTint="@color/secondColor" />
 
         <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/progress"
             android:layout_width="@dimen/_110sdp"
             android:layout_height="@dimen/_110sdp"
-            android:id="@+id/progress"
             android:layout_gravity="center"
             app:cpb_background_progressbar_color="#4633A1"
             app:cpb_background_progressbar_width="10dp"
